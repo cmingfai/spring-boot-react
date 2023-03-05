@@ -11,6 +11,7 @@ import {
   Avatar,
   Radio,
   Popconfirm,
+  Divider,
 } from "antd";
 import {
   DesktopOutlined,
@@ -243,7 +244,10 @@ function App() {
             {renderStudents()}
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>By Oolong.cc</Footer>
+        <Footer style={{ textAlign: "center" }}>
+          By Oolong.cc
+          <Divider>All rights reserved.</Divider>
+        </Footer>
       </Layout>
     </Layout>
   );
