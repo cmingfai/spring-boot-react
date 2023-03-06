@@ -21,6 +21,7 @@ env:
   EB_ENVIRONMENT_NAME: Connected-env
   EB_APPLICATION_NAME: connected
   EB_DEPLOYMENT_PACKAGE: elasticbeanstalk/docker-compose.yml
+  GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
 
 jobs:
   deploy:
@@ -83,12 +84,11 @@ jobs:
           echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
           sed -i -E 's_(mingfaicheung/spring-boot-react-fullstack:)([^"]*)_\1'${BUILD_NUMBER}'_' src/elasticbeanstalk/docker-compose.yml
           echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
-          git remote set-url origin https://${{secrets.GIT_HUB_TOKEN}}@github.com/cmingfai/spring-boot-fullstack-professional.git
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add src/elasticbeanstalk/docker-compose.yml
           git commit -m "new app version: ${BUILD_NUMBER}"
-          git push
+          git push https://${{ env.GITHUB_TOKEN }}@github.com/cmingfai/spring-boot-fullstack-professional.git
 
       - uses: 8398a7/action-slack@v3
         with:
