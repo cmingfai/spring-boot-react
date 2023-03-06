@@ -246,7 +246,7 @@ function App() {
         </Content>
         <Footer style={{ textAlign: "center" }}>
           By Oolong.cc
-          <Divider>All rights reserved. Learn more and have fun.</Divider>
+          <Divider>All rights reserved. Learn more and have fun. 2023</Divider>
         </Footer>
       </Layout>
     </Layout>
