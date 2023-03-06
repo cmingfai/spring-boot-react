@@ -83,6 +83,7 @@ jobs:
           echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
           sed -i -E 's_(mingfaicheung/spring-boot-react-fullstack:)([^"]*)_\1'${BUILD_NUMBER}'_' src/elasticbeanstalk/docker-compose.yml
           echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
+          git remote set-url origin https://${{secrets.GIT_HUB_TOKEN}}@github.com/cmingfai/spring-boot-fullstack-professional.git
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add src/elasticbeanstalk/docker-compose.yml
