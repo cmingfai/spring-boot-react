@@ -1,13 +1,9 @@
 version: "3"
 services:
   backend:
-    image: mingfaicheung/spring-boot-react-fullstack:6.3.2023.4.13.1
+    image: mingfaicheung/spring-boot-react-fullstack:3
     ports:
       - "80:8080"
     restart: always
     environment:
       SPRING_PROFILES_ACTIVE: dev
-      DATA_DB_HOST: awseb-e-3zcjpszb5w-stack-awsebrdsdatabase-6fjgrpjw1xhs.ccoxkl90mzlx.ap-east-1.rds.amazonaws.com
-      DATA_DB_NAME: amigoscode
-      DATA_DB_USERNAME: mingfai
-      DATA_DB_PASSWORD: 305524kk
