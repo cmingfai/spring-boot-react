@@ -78,9 +78,6 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Update and commit app version in docker-compose.yaml
-         permissions:
-              packages: write
-              contents: write
          run: |
           BUILD_NUMBER=${{steps.build-number.outputs.BUILD_NUMBER}}
           echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
@@ -90,7 +87,7 @@ jobs:
           git config user.email github-actions@github.com
           git add src/elasticbeanstalk/docker-compose.yml
           git commit -m "new app version: ${BUILD_NUMBER}"
-          git push https://${{ env.GITHUB_TOKEN }}@github.com/cmingfai/spring-boot-fullstack-professional.git
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/cmingfai/spring-boot-fullstack-professional.git
 
       - uses: 8398a7/action-slack@v3
         with:
