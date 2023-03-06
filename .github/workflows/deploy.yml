@@ -6,6 +6,11 @@ on:
 
   workflow_dispatch:
 
+permissions:
+  pull-requests: write
+  issues: write
+  repository-projects: write
+
 env:
   # Postgres
   POSTGRESQL_VERSION: 13.1
