@@ -26,7 +26,7 @@ env:
   AWS_REGION: ap-east-1
   EB_ENVIRONMENT_NAME: Connected-env
   EB_APPLICATION_NAME: connected
-  EB_DEPLOYMENT_PACKAGE: elasticbeanstalk/docker-compose.yml
+  EB_DEPLOYMENT_PACKAGE: src/elasticbeanstalk/docker-compose.yml
 
 jobs:
   deploy:
