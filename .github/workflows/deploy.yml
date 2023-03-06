@@ -83,17 +83,17 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Update and commit app version in docker-compose.yaml
-          run: |
-            BUILD_NUMBER=${{steps.build-number.outputs.BUILD_NUMBER}}
-            echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
-            sed -i -E 's_(mingfaicheung/spring-boot-react-fullstack:)([^"]*)_\1'${BUILD_NUMBER}'_' src/elasticbeanstalk/docker-compose.yml
-            echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
-            git config user.name github-actions
-            git config user.email github-actions@github.com
-            git add src/elasticbeanstalk/docker-compose.yml
-            git commit -m "new app version: ${BUILD_NUMBER}"
-            git push https://${{ secrets.GITHUB_TOKEN }}@github.com/cmingfai/spring-boot-fullstack-professional.git
- 
+        run: |
+          BUILD_NUMBER=${{steps.build-number.outputs.BUILD_NUMBER}}
+          echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
+          sed -i -E 's_(mingfaicheung/spring-boot-react-fullstack:)([^"]*)_\1'${BUILD_NUMBER}'_' src/elasticbeanstalk/docker-compose.yml
+          echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add src/elasticbeanstalk/docker-compose.yml
+          git commit -m "new app version: ${BUILD_NUMBER}"
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/cmingfai/spring-boot-fullstack-professional.git
+
       - uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
