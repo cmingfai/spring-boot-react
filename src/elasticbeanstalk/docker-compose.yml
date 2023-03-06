@@ -1,7 +1,7 @@
 version: "3"
 services:
   backend:
-    image: mingfaicheung/spring-boot-react-fullstack:3
+    image: mingfaicheung/spring-boot-react-fullstack:6.3.2023.2.46.32
     ports:
       - "80:8080"
     restart: always
