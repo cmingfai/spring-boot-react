@@ -6,6 +6,8 @@ on:
 
   workflow_dispatch:
 
+permissions: read-all|write-all
+
 env:
   # Postgres
   POSTGRESQL_VERSION: 13.1
@@ -78,9 +80,7 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Update and commit app version in docker-compose.yaml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
-        run: |
+         run: |
           BUILD_NUMBER=${{steps.build-number.outputs.BUILD_NUMBER}}
           echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
           sed -i -E 's_(mingfaicheung/spring-boot-react-fullstack:)([^"]*)_\1'${BUILD_NUMBER}'_' src/elasticbeanstalk/docker-compose.yml
