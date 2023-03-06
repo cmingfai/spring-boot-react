@@ -88,7 +88,7 @@ jobs:
           git config user.email github-actions@github.com
           git add src/elasticbeanstalk/docker-compose.yml
           git commit -m "new app version: ${BUILD_NUMBER}"
-          git push https://${{ env.GITHUB_TOKEN }}@github.com/cmingfai/spring-boot-fullstack-professional.git
+          git push https://${{cmingfai}}:${{ env.GITHUB_TOKEN }}@github.com/cmingfai/spring-boot-fullstack-professional.git
 
       - uses: 8398a7/action-slack@v3
         with:
