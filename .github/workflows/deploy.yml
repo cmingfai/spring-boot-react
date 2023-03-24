@@ -6,6 +6,12 @@ on:
 
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+  issues: read
+  packages: none
+
 env:
   # Postgres
   POSTGRESQL_VERSION: 13.1
@@ -20,7 +26,7 @@ env:
   AWS_REGION: ap-east-1
   EB_ENVIRONMENT_NAME: Connected-env
   EB_APPLICATION_NAME: connected
-  EB_DEPLOYMENT_PACKAGE: elasticbeanstalk/docker-compose.yml
+  EB_DEPLOYMENT_PACKAGE: src/elasticbeanstalk/docker-compose.yml
 
 jobs:
   deploy:
@@ -36,6 +42,9 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
+      - name: Install docker-credential-pass
+        run: |
+          wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz && tar -xf docker-credential-pass-v0.6.0-amd64.tar.gz && chmod +x docker-credential-pass && sudo mv docker-credential-pass /usr/local/bin/
       - uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
@@ -84,7 +93,7 @@ jobs:
           git config user.email github-actions@github.com
           git add src/elasticbeanstalk/docker-compose.yml
           git commit -m "new app version: ${BUILD_NUMBER}"
-          git push
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/cmingfai/spring-boot-fullstack-professional.git
 
       - uses: 8398a7/action-slack@v3
         with:
