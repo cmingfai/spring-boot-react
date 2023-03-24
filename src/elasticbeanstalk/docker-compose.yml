@@ -1,7 +1,7 @@
 version: "3"
 services:
   backend:
-    image: cmingfai/spring-boot-react:1
+    image: cmingfai/spring-boot-react:24.3.2023.13.55.34
     ports:
       - "80:8080"
     restart: always
