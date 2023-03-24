@@ -1,13 +1,13 @@
 version: "3"
 services:
   backend:
-    image: cmingfai/spring-boot-react:3
+    image: cmingfai/spring-boot-react:1
     ports:
       - "80:8080"
     restart: always
     environment:
       SPRING_PROFILES_ACTIVE: dev
-      DATA_DB_HOST: awseb-e-3zcjpszb5w-stack-awsebrdsdatabase-6fjgrpjw1xhs.ccoxkl90mzlx.ap-east-1.rds.amazonaws.com
+      DATA_DB_HOST: awseb-e-3zcjpszb5w-stack-awsebrdsdatabase-1ch6lxq4lcus.ccoxkl90mzlx.ap-east-1.rds.amazonaws.com
       DATA_DB_NAME: amigoscode
       DATA_DB_USERNAME: mingfai
       DATA_DB_PASSWORD: 305524kk
