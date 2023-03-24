@@ -15,8 +15,9 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>19</java.version>
-		<app.image.name>spring-boot-react-fullstack</app.image.name>
+		<app.image.name>spring-boot-react</app.image.name>
 		<app.image.tag/>
+		<docker.username>cmingfai</docker.username>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -132,7 +133,7 @@
 			<phase>package</phase>
 			<configuration>
 				<to>
-				<image>docker.io/mingfaicheung/${app.image.name}:${app.image.tag}</image>
+				<image>docker.io/${docker.username}/${app.image.name}:${app.image.tag}</image>
 				<credHelper>pass</credHelper>
 				</to>
 			</configuration>
@@ -143,7 +144,7 @@
 			<phase>package</phase>
 			<configuration>
 				<to>
-				<image>docker.io/mingfaicheung/${app.image.name}:latest</image>
+				<image>docker.io/${docker.username}/${app.image.name}:latest</image>
 				<credHelper>pass</credHelper>
 				</to>
 			</configuration>
@@ -183,7 +184,7 @@
 			<phase>package</phase>
 			<configuration>
 				<to>
-				<image>mingfaicheung/${app.image.name}:${app.image.tag}</image>
+				<image>${docker.username}/${app.image.name}:${app.image.tag}</image>
 				</to>
 			</configuration>
 			<goals><goal>dockerBuild</goal></goals>
@@ -193,7 +194,7 @@
 			<phase>package</phase>
 			<configuration>
 				<to>
-				<image>mingfaicheung/${app.image.name}:latest</image>
+				<image>${docker.username}/${app.image.name}:latest</image>
 				</to>
 			</configuration>
 			<goals><goal>dockerBuild</goal></goals>
