@@ -19,7 +19,8 @@ env:
   POSTGRESQL_USER: postgres
   POSTGRESQL_PASSWORD: password
   # Java
-  JAVA_VERSION: 1.19
+  JAVA_VERSION: 19
+
   # DockerHub
   DOCKER_HUB_USERNAME: cmingfai
   # AWS & Elastic Bean Stalk
