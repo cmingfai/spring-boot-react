@@ -1,1 +1,1 @@
-# spring-boot-fullstack-professional
+# spring-boot-react
