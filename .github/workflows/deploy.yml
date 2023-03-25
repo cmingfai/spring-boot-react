@@ -65,7 +65,6 @@ jobs:
 
       - name: Build Number
         id: build-number
-        #run: echo "::set-output name=BUILD_NUMBER::$(date '+%-d.%-m.%Y.%-H.%-M.%-S')"
         run: echo "build_number=$(date '+%-d.%-m.%Y.%-H.%-M.%-S')" >> $GITHUB_ENV
       - name: Docker Login
         uses: docker/login-action@f3364599c6aa293cdc2b8391b1b56d0c30e45c8a
@@ -79,7 +78,7 @@ jobs:
             -P build-frontend \
             -P jib-push-to-dockerhub \
               -Dapp.image.tag="${{ env.build_number }}"
-        # -Dapp.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}}
+        # -Dapp.image.tag=${{env.build_number}}
       - uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
@@ -115,8 +114,8 @@ jobs:
           environment_name: ${{ env.EB_ENVIRONMENT_NAME }}
           application_name: ${{ env.EB_APPLICATION_NAME }}
           deployment_package: ${{ env.EB_DEPLOYMENT_PACKAGE }}
-          version_label: ${{ steps.build-number.outputs.BUILD_NUMBER }}
-          version_description: Version ${{steps.build-number.outputs.BUILD_NUMBER}} deployed via github actions ${{ github.sha }}
+          version_label: ${{ env.build_number }}
+          version_description: Version ${{env.build_number}} deployed via github actions ${{ github.sha }}
           wait_for_deployment: 60
       - uses: 8398a7/action-slack@v3
         with:
