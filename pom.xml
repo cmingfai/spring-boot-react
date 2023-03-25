@@ -217,7 +217,7 @@
 	<artifactId>frontend-maven-plugin</artifactId>
 	<version>1.12.1</version>
 	<configuration>
-		<nodeVersion>v18.12.1</nodeVersion>
+		<nodeVersion>v18.15.0</nodeVersion>
 		<workingDirectory>src/frontend</workingDirectory>
 	</configuration>
 	<executions>
@@ -227,8 +227,8 @@
 				<goal>install-node-and-npm</goal>
 			</goals>
 			<configuration>
-				<nodeVersion>v18.12.1</nodeVersion>
-				<npmVersion>8.19.2</npmVersion>
+				<nodeVersion>v18.15.0</nodeVersion>
+				<npmVersion>9.5.0</npmVersion>
 			</configuration>
 		</execution>
 		<execution>
