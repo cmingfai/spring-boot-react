@@ -244,12 +244,7 @@ function App() {
             {renderStudents()}
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          By Oolong.cc
-          <Divider>
-            All rights reserved. Learn more and have fun. 2023-03. testing
-          </Divider>
-        </Footer>
+        <Footer style={{ textAlign: "center" }}>2023 By Oolong.cc</Footer>
       </Layout>
     </Layout>
   );
