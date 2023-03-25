@@ -84,12 +84,12 @@ jobs:
         with:
           status: ${{ job.status }}
           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
-          text: ":white_check_mark: pushed cmingfai/spring-boot-react:${{steps.build-number.outputs.BUILD_NUMBER}} to docker hub... https://hub.docker.com/repository/docker/cmingfai/spring-boot-react"
+          text: ":white_check_mark: pushed cmingfai/spring-boot-react:${{ env.build_number }} to docker hub... https://hub.docker.com/repository/docker/cmingfai/spring-boot-react"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Update and commit app version in docker-compose.yaml
         run: |
-          BUILD_NUMBER=${{steps.build-number.outputs.BUILD_NUMBER}}
+          BUILD_NUMBER=${{ env.build_number }}
           echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
           sed -i -E 's_(cmingfai/spring-boot-react:)([^"]*)_\1'${BUILD_NUMBER}'_' src/elasticbeanstalk/docker-compose.yml
           echo -e "Current elasticbeanstalk/docker-compose.yml\n$(cat src/elasticbeanstalk/docker-compose.yml)"
